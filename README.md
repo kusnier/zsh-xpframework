@@ -4,6 +4,22 @@ This is a plugin for [oh-my-zsh][oh-my-zsh].
 
 ## Sample input
 
+Input: 
+
+```sh
+$ xpcli -<TAB>
+```
+
+Result:
+
+```sh
+$ xpcli -                                                                                  ✘
+option
+-c   -- Add the path to the PropertyManager sources.
+-cp  -- Add the path value to the class path.
+-v   -- Enable verbosity.
+```
+
 Input:
 
 ```sh
