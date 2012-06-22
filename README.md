@@ -13,7 +13,7 @@ $ xpcli -<TAB>
 Result:
 
 ```sh
-$ xpcli -                                                                                  ✘
+$ xpcli -
 option
 -c   -- Add the path to the PropertyManager sources.
 -cp  -- Add the path value to the class path.
