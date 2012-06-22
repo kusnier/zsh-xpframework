@@ -7,19 +7,19 @@ This is a plugin for [oh-my-zsh][oh-my-zsh].
 Input:
 
 ```sh
-xpcli d.m.<TAB>
+$ xpcli d.m.<TAB>
 ```
 
 Result:
 
 ```sh
-xpcli de.matrixcode.experiments.scriptlet.
+$ xpcli de.matrixcode.experiments.scriptlet.
 ```
 
 Input:
 
 ```sh
-xpcli de.matrixcode.experiments.scriptlet.<TAB>
+$ xpcli de.matrixcode.experiments.scriptlet.<TAB>
 ```
 
 Result:
