@@ -1,0 +1,37 @@
+#compdef xp
+
+_xp() {
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+
+    _arguments \
+      '(-cp)-cp[Add the path value to the class path.]: :->cpath' \
+      '(-v)-v[Display version and classloader information.]' \
+      '(-e)-e[Evaluate code.]' \
+      '(-w)-w[Evaluate code and write result.]' \
+      '(-d)-d[Evaluate code and dump result.]' \
+      '(-r)-r[Reflect a class.]' \
+      '(-xar)-xar[Running XARs.]' \
+      '*: :_xpclasses'
+
+    case $state in
+    conf)
+        _arguments '*:Config path:_directories'
+    ;;
+    cpath)
+        _arguments '*:Class path:_directories'
+    ;;
+    esac 
+}
+
+_xpclasses() {
+  local i expl
+  local -a c
+
+  for i in `cat *.pth`; do
+    if [[ -d $i ]]; then
+      c+=( $i/**/*.class.php(.:r:s/.class//:s#$i/##:gs#/#.#) )
+    fi
+  done
+  _wanted classes expl 'xp-framework class' compadd "$@" -M 'r:|.=* r:|=*' -a - c
+}
