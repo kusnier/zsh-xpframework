@@ -12,7 +12,7 @@ _xp() {
       '(-d)-d[Evaluate code and dump result.]' \
       '(-r)-r[Reflect a class.]' \
       '(-xar)-xar[Running XARs.]' \
-      '*: :_xpclasses'
+      '*: :->rest'
 
     case $state in
     conf)
@@ -20,6 +20,10 @@ _xp() {
     ;;
     cpath)
         _arguments '*:Class path:_directories'
+    ;;
+    rest)
+        _xpclasses
+        _files
     ;;
     esac 
 }

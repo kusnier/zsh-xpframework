@@ -9,7 +9,7 @@ _xpcli() {
       '(-c)-c[Add the path to the PropertyManager sources.]: :->conf' \
       '(-cp)-cp[Add the path value to the class path.]: :->cpath' \
       '(-v)-v[Enable verbosity.]' \
-      '*: :_xpclasses'
+      '*: :->rest'
 
     case $state in
     conf)
@@ -17,6 +17,10 @@ _xpcli() {
     ;;
     cpath)
         _arguments '*:Class path:_directories'
+    ;;
+    rest)
+        _xpclasses
+        _files
     ;;
     esac 
 }
