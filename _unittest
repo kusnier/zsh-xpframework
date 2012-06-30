@@ -1,0 +1,31 @@
+#compdef unittest
+
+_unittest() {
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+
+    _arguments \
+      '(-v)-v[Be verbose]' \
+      '(-q)-q[Be quiet (no output)]' \
+      '(-cp)-cp[Add classpath elements]: :->cpath' \
+      '(-a)-a[{argument}: Define argument to pass to tests (may be used multiple times)]' \
+      '(-l)-l[{listener.class.Name} {output}, where output is either "-" for console output or a file name]: :->listner' \
+      '(-e)-e[{test method sourcecode}: Evaluate source]' \
+      '*: :->rest'
+
+    case $state in
+    conf)
+        _arguments '*:Config path:_directories'
+    ;;
+    cpath)
+        _arguments '*:Class path:_directories'
+    ;;
+    listner)
+        _xp_class
+    ;;
+    rest)
+        _xp_class
+        _files -g '*.(ini|class.php)'
+    ;;
+    esac 
+}
