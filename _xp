@@ -11,7 +11,7 @@ _xp() {
       '(-w)-w[Evaluate code and write result.]' \
       '(-d)-d[Evaluate code and dump result.]' \
       '(-r)-r[Reflect a class.]' \
-      '(-xar)-xar[Running XARs.]' \
+      '(-xar)-xar[Running XARs.]: :->xar' \
       '*: :->rest'
 
     case $state in
@@ -21,21 +21,12 @@ _xp() {
     cpath)
         _arguments '*:Class path:_directories'
     ;;
+    xar)
+        _files -g '*.xar'
+    ;;
     rest)
-        _xpclasses
+        _xp_class
         _files
     ;;
     esac 
-}
-
-_xpclasses() {
-  local i expl
-  local -a c
-
-  for i in `cat *.pth`; do
-    if [[ -d $i ]]; then
-      c+=( $i/**/*.class.php(.:r:s/.class//:s#$i/##:gs#/#.#) )
-    fi
-  done
-  _wanted classes expl 'xp-framework class' compadd "$@" -M 'r:|.=* r:|=*' -a - c
 }
