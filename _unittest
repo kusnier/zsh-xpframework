@@ -11,6 +11,7 @@ _unittest() {
       '(-a)-a[{argument}: Define argument to pass to tests (may be used multiple times)]' \
       '(-l)-l[{listener.class.Name} {output}, where output is either "-" for console output or a file name]: :->listner' \
       '(-e)-e[{test method sourcecode}: Evaluate source]' \
+      '(--color)--color=-[Color mode]::when:(on off auto)' \
       '*: :->rest'
 
     case $state in
