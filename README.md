@@ -2,6 +2,12 @@
 
 This is a plugin for [oh-my-zsh][oh-my-zsh].
 
+Available completer:
+
+*   xpcli
+*   xp
+*   unittest
+
 ## Sample input
 
 Input: 
