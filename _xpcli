@@ -6,9 +6,9 @@ _xpcli() {
     typeset -A opt_args
 
     _arguments \
-      '(-c)-c[Add the path to the PropertyManager sources.]: :->conf' \
-      '(-cp)-cp[Add the path value to the class path.]: :->cpath' \
-      '(-v)-v[Enable verbosity.]' \
+      '*-c[Add the path to the PropertyManager sources.]: :->conf' \
+      '*-cp[Add the path value to the class path.]: :->cpath' \
+      '-v[Enable verbosity.]' \
       '*: :->rest'
 
     case $state in
