@@ -2,10 +2,37 @@
 
 local i expl
 local -a c
+local type
 
-  for i in `cat *.pth`; do
-    if [[ -d $i ]]; then
+# TODO: use classpath in later versions
+
+zparseopts -D -E -a classpath t:=type
+
+if (( $#type )); then
+    type=( ${type:#-t} )
+    type="$type"
+  else
+    type=
+  fi
+
+for i in `cat *.pth`; do
+  if [[ -d $i ]]; then
+
+    case $type in
+    command)
+      c+=( $i/**/cmd/**/*.class.php(.:r:s/.class//:s#$i/##:gs#/#.#) )
+    ;;
+
+    unittest)
+      c+=( $i/**/unittest/**/*.class.php(.:r:s/.class//:s#$i/##:gs#/#.#) )
+    ;;
+
+    *)
       c+=( $i/**/*.class.php(.:r:s/.class//:s#$i/##:gs#/#.#) )
-    fi
-  done
-  _wanted classes expl 'xp-framework class' compadd "$@" -M 'r:|.=* r:|=*' -a - c
+    ;;
+
+    esac
+  fi
+done
+
+_wanted classes expl 'xp-framework class' compadd "$@" -M 'r:|.=* r:|=*' -a - c
