@@ -6,7 +6,7 @@ function infinitest() {
 
   inotifywait -e close_write -e move -e create -e delete \
     -r -m $directories | while read line ; do
-      unittest unittest.ini
+      unittest -l xp.unittest.XTermTitleListener - unittest.ini
   done
 }
 
