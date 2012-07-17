@@ -4,7 +4,7 @@ function infinitest() {
   [[ -d etc/ ]] && directories+=('etc/')
   [[ -d xsl/ ]] && directories+=('xsl/')
 
-  inotifywait -e modify -e move -e create -e delete \
+  inotifywait -e close_write -e move -e create -e delete \
     -r -m $directories | while read line ; do
       unittest unittest.ini
   done
