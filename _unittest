@@ -25,7 +25,7 @@ _unittest() {
         _xp_class
     ;;
     rest)
-        _xp_class
+        _xp_class -t unittest
         _files -g '*.(ini|class.php)'
     ;;
     esac 

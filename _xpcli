@@ -1,7 +1,7 @@
 #compdef xpcli
 #
 
-_xpcli() { 
+_xpcli() {
     local curcontext="$curcontext" state line
     typeset -A opt_args
 
@@ -19,9 +19,9 @@ _xpcli() {
         _arguments '*:Class path:_directories'
     ;;
     rest)
-        _xp_class
+        _xp_class -t command
         _files
     ;;
-    esac 
+    esac
 }
 
