@@ -1,6 +1,11 @@
 function infinitest() {
+  local directories
+  [[ -d src/ ]] && directories+=('src/')
+  [[ -d etc/ ]] && directories+=('etc/')
+  [[ -d xsl/ ]] && directories+=('xsl/')
+
   inotifywait -e modify -e move -e create -e delete \
-    -r -m src/ etc/ xsl/  | while read line ; do
+    -r -m $directories | while read line ; do
       unittest unittest.ini
   done
 }
